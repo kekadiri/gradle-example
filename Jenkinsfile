@@ -28,7 +28,7 @@ pipeline {
                withCredentials([usernamePassword(credentialsId: 'nexus-Repo', usernameVariable: 'admin', passwordVariable: 'password')]) {
                     script {
                         // Deploy artifacts to Nexus
-                       sh 'gradle publish' 
+                       sh 'gradle publish -PnexusUsername=${admin} -PnexusPassword=${password}' 
                     }
                 }
             }
