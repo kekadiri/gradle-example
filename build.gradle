@@ -2,6 +2,7 @@ plugins {
     id 'groovy'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id "org.sonarqube" version "3.3"
 }
 
 repositories {
@@ -28,4 +29,16 @@ dependencies {
 
 application {
     mainClassName = 'com.adjectivecolournoun.gradle.Greetz'
+}
+sonarqube {
+    properties {
+        // SonarQube server URL
+        property "sonar.host.url", "http://54.80.73.124:9000"
+        
+        // Project identification
+        property "sonar.projectKey", "squ_5932d91a2f715ed4be0a47825949a98573773404"
+        property "sonar.projectName", "gradle-example"
+        property "sonar.projectVersion", "1.0"
+
+    }
 }
