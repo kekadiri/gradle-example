@@ -61,7 +61,7 @@ publishing {
     repositories {
         maven {
             // Configure the URL of your Nexus repository
-            url 'http://3.82.57.126:8081/repository/maven-central/'
+            url 'http://3.82.57.126:8081/repository/maven-releases/'
 			 allowInsecureProtocol true
             credentials {
                 username = 'admin'
