@@ -16,10 +16,12 @@ pipeline {
     }
     stage('Sonar Quality checks') {
       steps {
+        script {
         withSonarQubeEnv(credentialsId: 'sonarqube') {
         sh 'gradle sonarqube'
       }
     }
+      }
     }
   }
 }
