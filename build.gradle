@@ -3,12 +3,16 @@ plugins {
     id 'application'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id "org.sonarqube" version "3.3"
+    id 'maven-publish'
 }
+group = 'org.gradle-java-app'
+version = '1.0.0'
 
 repositories {
     jcenter()
     flatDir {
         dirs 'lib'
+        mavenCentral()
     }
 }
 
@@ -40,5 +44,29 @@ sonarqube {
         property "sonar.projectName", "gradle-example"
         property "sonar.projectVersion", "1.0"
 
+    }
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            // Optional: Configure the publication metadata
+            groupId = 'org.gradle-example-app'
+            artifactId = 'gradle-example-shadow.zip.zip'
+            version = '1.0.0'
+        }
+    }
+
+    repositories {
+        maven {
+            // Configure the URL of your Nexus repository
+            url 'http://3.82.57.126:8081/repository/maven-central/'
+			 allowInsecureProtocol true
+            credentials {
+                username = 'admin'
+                password = 'password'
+            }
+        }
     }
 }
