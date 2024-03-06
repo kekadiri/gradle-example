@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Sonar Quality checks') {
       steps {
-        sh 'mvn sonar:sonar'
+        sh 'gradle sonarqube'
       }
     }
   }
