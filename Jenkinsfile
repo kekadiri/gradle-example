@@ -14,6 +14,11 @@ pipeline {
         sh 'gradle clean build'
       }
     }
+    stage('Sonar Quality checks') {
+      steps {
+        sh 'mvn sonar:sonar'
+      }
+    }
   }
 }
       
